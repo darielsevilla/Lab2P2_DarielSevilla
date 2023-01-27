@@ -27,7 +27,7 @@ public class Lab2P2_DarielSevilla {
 
         String test;
         do {
-            
+
             System.out.print("Menu de opciones:\n"
                     + "1-Registo de inmueble\n"
                     + "2-Manejo de Estados\n"
@@ -52,24 +52,36 @@ public class Lab2P2_DarielSevilla {
                                     + "4-Borrar casas/edificios/solares\n"
                                     + "5-Eliminar casa/edificio/solares\n"
                                     + "\nElija opcion: ");
-                                    men = lea.nextInt();
+                            men = lea.nextInt();
                         } while (men < 1 || men > 5);
-                        
+
                         int opcion = 0;
-                        do {
-                            System.out.println("\n"
-                                    + "1-casa\n"
-                                    + "2-edificio\n"
-                                    + "3-solar\n"
-                                    + "Ingrese opcion:");
-                            opcion = lea.nextInt();
-                        } while (opcion < 1 || opcion > 3);
-               
-                        if(men == 1){
-                            if(opcion == 1){
-                                
-                                System.out.println("Ingrese nombre de casa:");
-                                String nombre = lea.next();
+                        int op2 = 0;
+                        if (men != 2) {
+                            do {
+                                System.out.println("\n"
+                                        + "1-casa\n"
+                                        + "2-edificio\n"
+                                        + "3-solar\n"
+                                        + "Ingrese opcion:");
+                                opcion = lea.nextInt();
+                            } while (opcion < 1 || opcion > 3);
+                        } else {
+                            do {
+                                System.out.println("\n"
+                                        + "1-casas\n"
+                                        + "2-edificios\n"
+                                        + "3-solares\n"
+                                        + "4-todos\n"
+                                        + "Ingrese opcion:");
+                                opcion = lea.nextInt();
+                            } while (op2 < 1 || op2 > 4);
+                        }
+                        if (men == 1) {
+                            if (opcion == 1) {
+
+                                System.out.println("Ingrese numero de casa:");
+                                int numero = lea.nextInt();
                                 System.out.println("Ingrese numero de bloque:");
                                 int bloque = lea.nextInt();
                                 System.out.println("Ingrese ancho:");
@@ -80,12 +92,12 @@ public class Lab2P2_DarielSevilla {
                                 int ban = lea.nextInt();
                                 System.out.println("Numero de Cuartos:");
                                 int cuar = lea.nextInt();
-                                
+
                                 Color color = JColorChooser.showDialog(null, "Ingrese color", Color.yellow);
-                                
-                                Casa nueva = new Casa(nombre, bloque, color, ancho, largo, ban, cuar);
+
+                                Casa nueva = new Casa(numero, bloque, color, ancho, largo, ban, cuar);
                                 lista.add(nueva);
-                            }else if(opcion == 2){
+                            } else if (opcion == 2) {
                                 System.out.println("Ingrese numero de pisos:");
                                 int pisos = lea.nextInt();
                                 System.out.println("Ingrese cantidad de locales:");
@@ -94,7 +106,7 @@ public class Lab2P2_DarielSevilla {
                                 String referencia = lea.next();
                                 Edificio nuevo = new Edificio(pisos, locales, referencia);
                                 lista.add(nuevo);
-                            }else if(opcion == 3){
+                            } else if (opcion == 3) {
                                 System.out.println("Ingrese ancho:");
                                 int ancho = lea.nextInt();
                                 System.out.println("Ingrese largo:");
@@ -102,34 +114,141 @@ public class Lab2P2_DarielSevilla {
                                 Solar nuevo = new Solar(ancho, largo);
                                 lista.add(nuevo);
                             }
-                        }else if(men == 2){
+                        } else if (men == 2) {
                             int num = 1;
-                            if(opcion == 1){
+                            if (op2 == 1) {
                                 int casa = 1;
                                 for (Object object : lista) {
-                                    if(object instanceof Casa){
+                                    if (object instanceof Casa) {
                                         System.out.println("Casa " + num);
                                         System.out.println(object);
                                         num++;
                                     }
                                 }
-                            }else if(opcion == 2){
+                            } else if (op2 == 2) {
                                 for (Object object : lista) {
-                                    if(object instanceof Edificio){
+                                    if (object instanceof Edificio) {
                                         System.out.println("Edificio " + num);
                                         System.out.println(object);
                                         num++;
                                     }
                                 }
-                            }else if(opcion == 3){
+                            } else if (op2 == 3) {
                                 for (Object object : lista) {
-                                    if(object instanceof Edificio){
+                                    if (object instanceof Edificio) {
                                         System.out.println("Solar " + num);
                                         System.out.println(object);
                                         num++;
                                     }
                                 }
+                            } else {
+                                for (Object object : lista) {
+                                    System.out.println("Inmueble " + num);
+                                    System.out.println(object);
+                                    num++;
+                                }
                             }
+                        } else if (men == 3) {
+                            int pos = 0;
+                            do {
+                                System.out.println("Que objeto de la lista desea modiicar:");
+                                pos = lea.nextInt();
+                            } while (pos > lista.size() || pos < 1);
+                            Object tempo = lista.get(pos - 1);
+                            int modificar = 0;
+                            if (tempo instanceof Casa) {
+                                System.out.println("Que desea modificar?");
+                                System.out.println("1-numero\n"
+                                        + "2-bloque\n"
+                                        + "3-color\n"
+                                        + "4-ancho\n"
+                                        + "5-largo\n"
+                                        + "6-numero de baños\n"
+                                        + "7-numero de cuartos\n"
+                                        + "Elija opcion:");
+                                modificar = lea.nextInt();
+
+                                if (modificar == 1) {
+                                    System.out.println("Ingrese nuevo valor:");
+                                    int newVal = lea.nextInt();
+                                    ((Casa) tempo).setNumero(newVal);
+                                } else if (modificar == 2) {
+                                    System.out.println("Ingrese nuevo valor:");
+                                    int newVal = lea.nextInt();
+                                    ((Casa) tempo).setBloque(newVal);
+                                } else if (modificar == 3) {
+                                    Color nuevo = JColorChooser.showDialog(null, "Ingrse color nuevo", ((Casa) tempo).getColor());
+                                    ((Casa) tempo).setColor(nuevo);
+                                } else if (modificar == 4) {
+                                    System.out.println("Ingrese nuevo valor:");
+                                    int newVal = lea.nextInt();
+                                    ((Casa) tempo).setAncho(newVal);
+                                } else if (modificar == 5) {
+                                    System.out.println("Ingrese nuevo valor:");
+                                    int newVal = lea.nextInt();
+                                    ((Casa) tempo).setLargo(newVal);
+                                } else if (modificar == 6) {
+                                    System.out.println("Ingrese nuevo valor:");
+                                    int newVal = lea.nextInt();
+                                    ((Casa) tempo).setNumb(newVal);
+                                } else if (modificar == 7) {
+                                    System.out.println("Ingrese nuevo valor:");
+                                    int newVal = lea.nextInt();
+                                    ((Casa) tempo).setCuartos(newVal);
+                                }
+                            }else if(tempo instanceof Edificio){
+                            System.out.println("Que desea modificar?");
+                                System.out.println("1-Numero de pisos\n"
+                                        + "2-Cantidad de locales\n"
+                                        + "Elija opcion:");    
+                                modificar = lea.nextInt();
+                                
+                                System.out.println("Ingrese nuevo valor:");
+                                int newVal = lea.nextInt();
+                                
+                                if(modificar == 1){
+                                    ((Edificio) tempo).setPisos(newVal);
+                                }else{
+                                    ((Edificio) tempo).setLocal(newVal);
+                                }
+                            }else if(tempo instanceof Solar){
+                                System.out.println("1-Ancho\n"
+                                        + "2-Largo\n"
+                                        + "Elija opcion:");    
+                                modificar = lea.nextInt();
+                                
+                                System.out.println("Ingrese nuevo valor:");
+                                int newVal = lea.nextInt();
+                                
+                                if(modificar == 1){
+                                    ((Solar) tempo).setAncho(newVal);
+                                }else{
+                                    ((Solar) tempo).setLargo(newVal);
+                                }
+                            }
+                        }else if(men == 4){
+                            int p = 0;
+                            do{
+                                System.out.println("Posicion del inmueble que desea borrar (empezando desde 1):");
+                                p = lea.nextInt();
+                            }while(p < 0 || p > lista.size());
+                            
+                            lista.remove(p-1);
+                        }else if(men == 5){
+                            int p = 0;
+                            do{
+                                System.out.println("Posicion del inmueble que desea comprar (empezando desde 1):");
+                                p = lea.nextInt();
+                            }while(p < 0 || p > lista.size());
+                            
+                            if(lista.get(p-1) instanceof Casa){
+                               ((Casa) lista.get(p-1)).setOwner(usuario.getNombre());
+                            }else if(lista.get(p-1) instanceof Edificio){
+                                ((Edificio) lista.get(p-1)).setOwner(usuario.getNombre());
+                            }else{
+                                ((Solar) lista.get(p-1)).setOwner(usuario.getNombre());
+                            }
+                           
                         }
 
                     } else {

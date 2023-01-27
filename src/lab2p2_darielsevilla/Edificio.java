@@ -16,6 +16,7 @@ public class Edificio {
     private String[] estados = {"En espera de construccion", "En construccion", "Lista", "En espera de demolicion", "Demolida"};
     private String owner = "";
 
+   
     public Edificio(int pisos, int local, String direccion) {
         this.pisos = pisos;
         this.local = local;
@@ -32,6 +33,14 @@ public class Edificio {
 
     public void setPisos(int pisos) {
         this.pisos = pisos;
+    }
+
+     public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     public int getLocal() {

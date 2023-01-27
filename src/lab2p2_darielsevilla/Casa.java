@@ -11,7 +11,7 @@ import java.awt.Color;
  * @author HP
  */
 public class Casa {
-    private String nombre;
+    private int numero;
     private int bloque;
     private Color color;
     private int ancho;
@@ -20,8 +20,8 @@ public class Casa {
     private int cuartos;
     private String owner = "";
 
-    public Casa(String nombre, int bloque, Color color, int ancho, int largo, int numb, int cuartos) {
-        this.nombre = nombre;
+    public Casa(int num, int bloque, Color color, int ancho, int largo, int numb, int cuartos) {
+        this.numero = num;
         this.bloque = bloque;
         this.color = color;
         this.ancho = ancho;
@@ -34,12 +34,12 @@ public class Casa {
         
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
     public int getBloque() {
@@ -91,7 +91,7 @@ public class Casa {
     }
     
     public String toString(){
-        String resp = "nombre: " + nombre +"\n"
+        String resp = "nombre: " + numero +"\n"
                 + "bloque: " + bloque + "\n"
                 + "color: " + color + "\n"
                 + "ancho: " + ancho + "\n"
@@ -102,6 +102,14 @@ public class Casa {
             resp += "dueño: " + owner + "\n";
         }
         return resp;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
     
 }
