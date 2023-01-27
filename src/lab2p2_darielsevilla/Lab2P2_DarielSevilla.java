@@ -196,64 +196,82 @@ public class Lab2P2_DarielSevilla {
                                     int newVal = lea.nextInt();
                                     ((Casa) tempo).setCuartos(newVal);
                                 }
-                            }else if(tempo instanceof Edificio){
-                            System.out.println("Que desea modificar?");
+                            } else if (tempo instanceof Edificio) {
+                                System.out.println("Que desea modificar?");
                                 System.out.println("1-Numero de pisos\n"
                                         + "2-Cantidad de locales\n"
-                                        + "Elija opcion:");    
+                                        + "Elija opcion:");
                                 modificar = lea.nextInt();
-                                
+
                                 System.out.println("Ingrese nuevo valor:");
                                 int newVal = lea.nextInt();
-                                
-                                if(modificar == 1){
+
+                                if (modificar == 1) {
                                     ((Edificio) tempo).setPisos(newVal);
-                                }else{
+                                } else {
                                     ((Edificio) tempo).setLocal(newVal);
                                 }
-                            }else if(tempo instanceof Solar){
+                            } else if (tempo instanceof Solar) {
                                 System.out.println("1-Ancho\n"
                                         + "2-Largo\n"
-                                        + "Elija opcion:");    
+                                        + "Elija opcion:");
                                 modificar = lea.nextInt();
-                                
+
                                 System.out.println("Ingrese nuevo valor:");
                                 int newVal = lea.nextInt();
-                                
-                                if(modificar == 1){
+
+                                if (modificar == 1) {
                                     ((Solar) tempo).setAncho(newVal);
-                                }else{
+                                } else {
                                     ((Solar) tempo).setLargo(newVal);
                                 }
                             }
-                        }else if(men == 4){
+                        } else if (men == 4) {
                             int p = 0;
-                            do{
+                            do {
                                 System.out.println("Posicion del inmueble que desea borrar (empezando desde 1):");
                                 p = lea.nextInt();
-                            }while(p < 0 || p > lista.size());
-                            
-                            lista.remove(p-1);
-                        }else if(men == 5){
+                            } while (p < 0 || p > lista.size());
+
+                            lista.remove(p - 1);
+                        } else if (men == 5) {
                             int p = 0;
-                            do{
+                            do {
                                 System.out.println("Posicion del inmueble que desea comprar (empezando desde 1):");
                                 p = lea.nextInt();
-                            }while(p < 0 || p > lista.size());
-                            
-                            if(lista.get(p-1) instanceof Casa){
-                               ((Casa) lista.get(p-1)).setOwner(usuario.getNombre());
-                            }else if(lista.get(p-1) instanceof Edificio){
-                                ((Edificio) lista.get(p-1)).setOwner(usuario.getNombre());
-                            }else{
-                                ((Solar) lista.get(p-1)).setOwner(usuario.getNombre());
+                            } while (p < 0 || p > lista.size());
+
+                            if (lista.get(p - 1) instanceof Casa) {
+                                ((Casa) lista.get(p - 1)).setOwner(usuario.getNombre());
+                            } else if (lista.get(p - 1) instanceof Edificio) {
+                                ((Edificio) lista.get(p - 1)).setOwner(usuario.getNombre());
+                            } else {
+                                ((Solar) lista.get(p - 1)).setOwner(usuario.getNombre());
                             }
-                           
+
                         }
 
                     } else {
                         System.out.println("No tiene credenciales de administrador");
                     }
+                    break;
+                case 2:
+                    int p = 0;
+                    do {
+                        System.out.println("Posicion del inmueble cuyo estado cambiara (empezando desde 1):");
+                        p = lea.nextInt();
+                    } while (p < 0 || p > lista.size());
+                    
+                    Object t = lista.get(p-1);
+                    
+                    if(t instanceof Casa){
+                        ((Casa) t).setEstado();
+                    }else if(t instanceof Edificio){
+                        ((Edificio) t).setEstado();
+                    }else{
+                        System.out.println("No se puede cambiar el estado de un solar");
+                    }
+                    break;
 
             }
 

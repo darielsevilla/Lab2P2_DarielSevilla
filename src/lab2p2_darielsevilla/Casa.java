@@ -18,6 +18,8 @@ public class Casa {
     private int largo;
     private int numb;
     private int cuartos;
+    private String estado;
+    private String[] estados = {"En espera de construccion", "En construccion", "Lista", "En espera de demolicion", "Demolida"};
     private String owner = "";
 
     public Casa(int num, int bloque, Color color, int ancho, int largo, int numb, int cuartos) {
@@ -33,7 +35,7 @@ public class Casa {
     public Casa(){
         
     }
-
+    
     public int getNumero() {
         return numero;
     }
@@ -97,7 +99,8 @@ public class Casa {
                 + "ancho: " + ancho + "\n"
                 + "largo: " + largo + "\n"
                 + "numero de baños: " + numb + "\n"
-                + "numero de cuartos: " + cuartos + "\n";
+                + "numero de cuartos: " + cuartos + "\n"
+                + "estado: " + estado +"\n";
         if(owner != ""){
             resp += "dueño: " + owner + "\n";
         }
@@ -111,5 +114,26 @@ public class Casa {
     public void setOwner(String owner) {
         this.owner = owner;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado() {
+        int pos = 0;
+        for (String estado1 : estados) {
+            if(estado1 == estado){
+                break;
+            }else{
+                pos++;
+            }
+        }
+        
+        if(pos != estados.length-1){
+            estado = estados[pos+1];
+        }
+    }
+    
+    
     
 }

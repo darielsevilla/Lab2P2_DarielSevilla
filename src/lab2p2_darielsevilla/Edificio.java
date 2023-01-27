@@ -63,14 +63,26 @@ public class Edificio {
         return estado;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setEstado() {
+        int pos = 0;
+        for (String estado1 : estados) {
+            if(estado1 == estado){
+                break;
+            }else{
+                pos++;
+            }
+        }
+        
+        if(pos != estados.length-1){
+            estado = estados[pos+1];
+        }
     }
     
     public String toString(){
         String resp = "pisos: " + pisos + "\n"
                 + "locales: " + local + "\n"
-                + "direccion de referencias: " + direccion + "\n";
+                + "direccion de referencias: " + direccion + "\n"
+                + "estado: " + estado + "\n";
         
         if(owner != ""){
             resp += "dueño: " + owner + "\n";
