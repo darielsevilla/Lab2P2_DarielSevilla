@@ -24,10 +24,10 @@ public class Lab2P2_DarielSevilla {
         User usuario = new User("Admin", 27, "admin", "admin123");
         ArrayList<User> userList = new ArrayList();
         ArrayList lista = new ArrayList();
-
+        lista.add(usuario);
         String test;
         do {
-
+            
             System.out.print("Menu de opciones:\n"
                     + "1-Registo de inmueble\n"
                     + "2-Manejo de Estados\n"
@@ -272,7 +272,36 @@ public class Lab2P2_DarielSevilla {
                         System.out.println("No se puede cambiar el estado de un solar");
                     }
                     break;
-
+                case 3:
+                    System.out.println("1-log in"
+                            + "2-log out\n"
+                            + "3-sign up\n"
+                            + "ingrese opcion:");
+                    int opcion = lea.nextInt();
+                    if(opcion == 1 && usuario == null){
+                        System.out.println("Ingrese username: ");
+                        String username = lea.next();
+                        System.out.println("Ingrese password: ");
+                        String password = lea.next();
+                        boolean truth = false;
+                        for (User user : userList) {
+                            if(user.getUsername() == username && user.getPassword() == password){
+                                truth = true;
+                            }
+                        }
+                        
+                        if(truth == true){
+                            System.out.println("Ingreso al nuevo usuario");
+                        }else{
+                            System.out.println("El usuario no esta en la lista");
+                        }
+                        
+                    }else if (usuario != null){
+                        System.out.println("Ya esta logged in");
+                    }
+                    
+                    
+                    break;
             }
 
         } while (op != 0);
