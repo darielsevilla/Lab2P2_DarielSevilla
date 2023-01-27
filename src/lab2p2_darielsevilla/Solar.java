@@ -11,7 +11,7 @@ package lab2p2_darielsevilla;
 public class Solar {
     private int ancho;
     private int largo;
-    private String owner;
+    private String owner = "";
 
     public Solar(int ancho, int largo) {
         this.ancho = ancho;
@@ -46,6 +46,13 @@ public class Solar {
         this.owner = owner;
     }
     
-    
+    public String toString(){
+        String resp = "ancho: " + ancho +"\n"
+                + "largo: " + largo + "\n";
+        if(owner != ""){
+            resp += "dueño: " + owner + "\n";
+        }
+        return resp;
+    }
     
 }

@@ -102,6 +102,34 @@ public class Lab2P2_DarielSevilla {
                                 Solar nuevo = new Solar(ancho, largo);
                                 lista.add(nuevo);
                             }
+                        }else if(men == 2){
+                            int num = 1;
+                            if(opcion == 1){
+                                int casa = 1;
+                                for (Object object : lista) {
+                                    if(object instanceof Casa){
+                                        System.out.println("Casa " + num);
+                                        System.out.println(object);
+                                        num++;
+                                    }
+                                }
+                            }else if(opcion == 2){
+                                for (Object object : lista) {
+                                    if(object instanceof Edificio){
+                                        System.out.println("Edificio " + num);
+                                        System.out.println(object);
+                                        num++;
+                                    }
+                                }
+                            }else if(opcion == 3){
+                                for (Object object : lista) {
+                                    if(object instanceof Edificio){
+                                        System.out.println("Solar " + num);
+                                        System.out.println(object);
+                                        num++;
+                                    }
+                                }
+                            }
                         }
 
                     } else {

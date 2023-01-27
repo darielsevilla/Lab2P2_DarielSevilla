@@ -18,7 +18,7 @@ public class Casa {
     private int largo;
     private int numb;
     private int cuartos;
-    private String owner;
+    private String owner = "";
 
     public Casa(String nombre, int bloque, Color color, int ancho, int largo, int numb, int cuartos) {
         this.nombre = nombre;
@@ -90,5 +90,18 @@ public class Casa {
         this.cuartos = cuartos;
     }
     
+    public String toString(){
+        String resp = "nombre: " + nombre +"\n"
+                + "bloque: " + bloque + "\n"
+                + "color: " + color + "\n"
+                + "ancho: " + ancho + "\n"
+                + "largo: " + largo + "\n"
+                + "numero de baños: " + numb + "\n"
+                + "numero de cuartos: " + cuartos + "\n";
+        if(owner != ""){
+            resp += "dueño: " + owner + "\n";
+        }
+        return resp;
+    }
     
 }

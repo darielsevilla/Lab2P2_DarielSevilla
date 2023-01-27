@@ -14,7 +14,7 @@ public class Edificio {
     private String direccion;
     private String estado;
     private String[] estados = {"En espera de construccion", "En construccion", "Lista", "En espera de demolicion", "Demolida"};
-    private String owner;
+    private String owner = "";
 
     public Edificio(int pisos, int local, String direccion) {
         this.pisos = pisos;
@@ -58,7 +58,17 @@ public class Edificio {
         this.estado = estado;
     }
     
-    
+    public String toString(){
+        String resp = "pisos: " + pisos + "\n"
+                + "locales: " + local + "\n"
+                + "direccion de referencias: " + direccion + "\n";
+        
+        if(owner != ""){
+            resp += "dueño: " + owner + "\n";
+        }
+        
+        return resp;
+    }
     
     
 }
