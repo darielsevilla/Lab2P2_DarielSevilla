@@ -27,7 +27,7 @@ public class Lab2P2_DarielSevilla {
         lista.add(usuario);
         String test;
         do {
-            
+
             System.out.print("Menu de opciones:\n"
                     + "1-Registo de inmueble\n"
                     + "2-Manejo de Estados\n"
@@ -77,7 +77,7 @@ public class Lab2P2_DarielSevilla {
                                 opcion = lea.nextInt();
                             } while (op2 < 1 || op2 > 4);
                         }
-                        if (men == 1) {
+                        if (men == 1 && checkAdmin(usuario)) {
                             if (opcion == 1) {
 
                                 System.out.println("Ingrese numero de casa:");
@@ -115,7 +115,10 @@ public class Lab2P2_DarielSevilla {
                                 Solar nuevo = new Solar(ancho, largo);
                                 lista.add(nuevo);
                             }
-                        } else if (men == 2) {
+                        } else {
+                            System.out.println("Necesita ingresar con un usuario credenciales de administrador");
+                        }
+                        if (men == 2 && usuario != null) {
                             int num = 1;
                             if (op2 == 1) {
                                 int casa = 1;
@@ -149,7 +152,11 @@ public class Lab2P2_DarielSevilla {
                                     num++;
                                 }
                             }
-                        } else if (men == 3) {
+                        } else {
+                            System.out.println("No ha ingresado a un usuario");
+                        }
+
+                        if (men == 3 && checkAdmin(usuario)) {
                             int pos = 0;
                             do {
                                 System.out.println("Que objeto de la lista desea modiicar:");
@@ -227,7 +234,11 @@ public class Lab2P2_DarielSevilla {
                                     ((Solar) tempo).setLargo(newVal);
                                 }
                             }
-                        } else if (men == 4) {
+                        } else {
+                            System.out.println("Necesita ingresar con un usuario credenciales de administrador");
+                        }
+
+                        if (men == 4 && checkAdmin(usuario)) {
                             int p = 0;
                             do {
                                 System.out.println("Posicion del inmueble que desea borrar (empezando desde 1):");
@@ -235,7 +246,10 @@ public class Lab2P2_DarielSevilla {
                             } while (p < 0 || p > lista.size());
 
                             lista.remove(p - 1);
-                        } else if (men == 5) {
+                        } else {
+                            System.out.println("Necesita ingresar con un usuario credenciales de administrador");
+                        }
+                        if (men == 5 && usuario != null) {
                             int p = 0;
                             do {
                                 System.out.println("Posicion del inmueble que desea comprar (empezando desde 1):");
@@ -250,6 +264,8 @@ public class Lab2P2_DarielSevilla {
                                 ((Solar) lista.get(p - 1)).setOwner(usuario.getNombre());
                             }
 
+                        }else{
+                            System.out.println("Necesita ingresar con un usuario.");
                         }
 
                     } else {
@@ -262,53 +278,53 @@ public class Lab2P2_DarielSevilla {
                         System.out.println("Posicion del inmueble cuyo estado cambiara (empezando desde 1):");
                         p = lea.nextInt();
                     } while (p < 0 || p > lista.size());
-                    
-                    Object t = lista.get(p-1);
-                    
-                    if(t instanceof Casa){
+
+                    Object t = lista.get(p - 1);
+
+                    if (t instanceof Casa) {
                         ((Casa) t).setEstado();
-                    }else if(t instanceof Edificio){
+                    } else if (t instanceof Edificio) {
                         ((Edificio) t).setEstado();
-                    }else{
+                    } else {
                         System.out.println("No se puede cambiar el estado de un solar");
                     }
                     break;
                 case 3:
-                    System.out.println("1-log in"
+                    System.out.println("1-log in\n"
                             + "2-log out\n"
                             + "3-sign up\n"
                             + "ingrese opcion:");
                     int opcion = lea.nextInt();
-                    if(opcion == 1 && usuario == null){
+                    if (opcion == 1 && usuario == null) {
                         System.out.println("Ingrese username: ");
                         String username = lea.next();
                         System.out.println("Ingrese password: ");
                         String password = lea.next();
                         boolean truth = false;
                         for (User user : userList) {
-                            if(user.getUsername() == username && user.getPassword() == password){
+                            if (user.getUsername() == username && user.getPassword() == password) {
                                 truth = true;
                             }
                         }
-                        
-                        if(truth == true){
+
+                        if (truth == true) {
                             System.out.println("Ingreso al nuevo usuario");
-                        }else{
+                        } else {
                             System.out.println("El usuario no esta en la lista");
                         }
-                        
-                    }else if (usuario != null){
+
+                    } else if (usuario != null) {
                         System.out.println("Ya esta logged in");
                     }
-                    
-                    if(opcion == 2 && usuario != null){
+
+                    if (opcion == 2 && usuario != null) {
                         usuario = null;
                         System.out.println("Cerro sesion");
-                    }else if(usuario == null){
+                    } else if (usuario == null) {
                         System.out.println("No ha ingresado sesion");
                     }
-                    
-                    if(opcion == 3){
+
+                    if (opcion == 3) {
                         System.out.println("Ingrese nuevo nombre:");
                         String nombre = lea.next();
                         System.out.println("Ingrese nuevo usuario:");
@@ -317,13 +333,12 @@ public class Lab2P2_DarielSevilla {
                         int edad = lea.nextInt();
                         System.out.println("Ingrese password:");
                         String password = lea.next();
-                        
+
                         User temporal = new User(nombre, edad, user, password);
                         userList.add(temporal);
                     }
                     break;
-                    
-                    
+
             }
 
         } while (op != 0);
