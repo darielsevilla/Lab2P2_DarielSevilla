@@ -10,4 +10,5 @@ package lab2p2_darielsevilla;
  */
 public class Solar {
     
+    
 }
