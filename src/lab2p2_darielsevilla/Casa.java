@@ -93,7 +93,7 @@ public class Casa {
     }
     
     public String toString(){
-        String resp = "nombre: " + numero +"\n"
+        String resp = "numero: " + numero +"\n"
                 + "bloque: " + bloque + "\n"
                 + "color: " + color + "\n"
                 + "ancho: " + ancho + "\n"
@@ -119,18 +119,11 @@ public class Casa {
         return estado;
     }
 
-    public void setEstado() {
-        int pos = 0;
-        for (String estado1 : estados) {
-            if(estado1 == estado){
-                break;
-            }else{
-                pos++;
-            }
-        }
-        
-        if(pos != estados.length-1){
-            estado = estados[pos+1];
+    public void setEstado(int x) {
+        if(x >= 0 && x < estados.length){
+            estado = estados[x];
+        }else{
+            System.out.println("No hay un estado en esa posicion");
         }
     }
     
