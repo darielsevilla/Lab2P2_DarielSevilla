@@ -300,7 +300,12 @@ public class Lab2P2_DarielSevilla {
                         System.out.println("Ya esta logged in");
                     }
                     
-                    
+                    if(opcion == 2 && usuario != null){
+                        usuario = null;
+                        System.out.println("Cerro sesion");
+                    }else if(usuario == null){
+                        System.out.println("No ha ingresado sesion");
+                    }
                     break;
             }
 
