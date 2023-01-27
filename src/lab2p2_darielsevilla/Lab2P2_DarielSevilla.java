@@ -103,7 +103,8 @@ public class Lab2P2_DarielSevilla {
                                 System.out.println("Ingrese cantidad de locales:");
                                 int locales = lea.nextInt();
                                 System.out.println("Ingrese direccion por referencia");
-                                String referencia = lea.next();
+                                lea.next();
+                                String referencia = lea.nextLine();
                                 Edificio nuevo = new Edificio(pisos, locales, referencia);
                                 lista.add(nuevo);
                             } else if (opcion == 3) {
@@ -306,7 +307,23 @@ public class Lab2P2_DarielSevilla {
                     }else if(usuario == null){
                         System.out.println("No ha ingresado sesion");
                     }
+                    
+                    if(opcion == 3){
+                        System.out.println("Ingrese nuevo nombre:");
+                        String nombre = lea.next();
+                        System.out.println("Ingrese nuevo usuario:");
+                        String user = lea.next();
+                        System.out.println("Ingrese edad:");
+                        int edad = lea.nextInt();
+                        System.out.println("Ingrese password:");
+                        String password = lea.next();
+                        
+                        User temporal = new User(nombre, edad, user, password);
+                        userList.add(temporal);
+                    }
                     break;
+                    
+                    
             }
 
         } while (op != 0);
