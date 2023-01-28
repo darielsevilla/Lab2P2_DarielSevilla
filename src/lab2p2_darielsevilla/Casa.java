@@ -30,6 +30,7 @@ public class Casa {
         this.largo = largo;
         this.numb = numb;
         this.cuartos = cuartos;
+        this.estado = estados[0];
     }
     
     public Casa(){
