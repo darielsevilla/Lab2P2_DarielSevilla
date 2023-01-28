@@ -140,7 +140,7 @@ public class Lab2P2_DarielSevilla {
                                 }
                             } else if (op2 == 3) {
                                 for (Object object : lista) {
-                                    if (object instanceof Edificio) {
+                                    if (object instanceof Solar) {
                                         System.out.println("Solar " + num);
                                         System.out.println(object);
                                         num++;
@@ -165,7 +165,7 @@ public class Lab2P2_DarielSevilla {
                             } while (pos > lista.size() || pos < 1);
                             Object tempo = lista.get(pos - 1);
                             int modificar = 0;
-                            System.out.println(lista.get(pos-1) instanceof Casa);
+                            
                             if (lista.get(pos-1) instanceof Casa) {
                                 System.out.println("Que desea modificar?");
                                 System.out.println("1-numero\n"
@@ -363,7 +363,7 @@ public class Lab2P2_DarielSevilla {
 
             }
 
-        } while (op != 0);
+        } while (op != 4);
 
     }
 
